@@ -7,8 +7,9 @@ class Solution:
             
             unfairness = float('inf')
             for j in range(k):
+                
                 state[j] += cookies[idx]
-                if state[j] > unfairness:
+                if state[j] >= unfairness:
                     state[j] -= cookies[idx]
                     continue
                 distribute = backtrack(state, idx+1)
