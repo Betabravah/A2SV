@@ -7,7 +7,8 @@ class Solution:
             
             unfairness = float('inf')
             for j in range(k):
-                
+                if max(state) >= unfairness:
+                    return unfairness
                 state[j] += cookies[idx]
                 if state[j] >= unfairness:
                     state[j] -= cookies[idx]
