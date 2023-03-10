@@ -3,16 +3,20 @@ class Solution:
         comb = []
         n = len(candidates)
         def find(idx, path, total):
+            if idx == n:
+                return
             if total > target:
                 return
             if total == target:
                 comb.append(path.copy())
                 return            
+            path.append(candidates[idx])
+            find(idx, path, total + candidates[idx])
+            path.pop()
+            find(idx+1, path, total)
             
-            for i in range(idx, n):
-                path.append(candidates[i])
-                find(i, path, total + candidates[i])
-                path.pop()
+                
+                
                 
             
             
