@@ -6,11 +6,11 @@ class Solution:
             return 0 <= row < len(grid) and 0 <= col < len(grid[0])
         
         def dfs(row, col, visited):
+            
             if (row, col) in visited:
                 return
             
              
-            
             visited.add((row, col))
             
             for row_change, col_change in directions:
