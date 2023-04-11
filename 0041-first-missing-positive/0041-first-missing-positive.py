@@ -10,6 +10,8 @@ class Solution:
                     
 
             i += 1
+            
+            
         for i in range(len(nums)):
             if nums[i] - 1 != i:
                 return i + 1
