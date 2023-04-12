@@ -1,10 +1,10 @@
 class Solution:
     def maximalNetworkRank(self, n: int, roads: List[List[int]]) -> int:
-        adjacency = defaultdict(set)
+        adjacency = defaultdict(list)
         
         for frm, to in roads:
-            adjacency[frm].add(to)
-            adjacency[to].add(frm)
+            adjacency[frm].append(to)
+            adjacency[to].append(frm)
 
         max_rank = 0
         for i in range(n):
@@ -16,7 +16,7 @@ class Solution:
                 if j in adjacency[i]:
                     max_rank = max(max_rank, rank + len(adjacency[j]) - 1)
                 else:
-                    max_rank = max(max_rank, rank + len(adjacency[j]))    
+                    max_rank = max(max_rank, rank + len(adjacency[j])) 
                 
                 
         return max_rank
