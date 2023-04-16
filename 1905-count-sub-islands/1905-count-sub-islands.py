@@ -18,10 +18,12 @@ class Solution:
                 new_row = row + row_change
                 new_col = col + col_change
                 
+                # connected land is part of island of only grid2
                 if isbound(new_row, new_col) and (new_row, new_col) not in visited and grid2[new_row][new_col] == 1:
                     dfs(new_row, new_col)
                     
-                    
+             
+        # visit the islands of only grid2
         for i in range(rows):
             for j in range(cols):
                 if (i, j) not in visited and grid1[i][j] == 0 and grid2[i][j] == 1:
