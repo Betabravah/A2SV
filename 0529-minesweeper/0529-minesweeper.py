@@ -30,7 +30,7 @@ class Solution:
                     cur = board[row][col]
                     
                     if isinstance(cur, int):
-                        board[row][col] = str(neighbour_mine) + int(cur)
+                        board[row][col] = str(neighbour_mine + int(cur))
                         
                     else:
                         board[row][col] = str(neighbour_mine)
