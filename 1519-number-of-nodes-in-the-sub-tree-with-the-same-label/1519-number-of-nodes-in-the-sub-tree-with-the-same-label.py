@@ -13,24 +13,23 @@ class Solution:
         output = [0] * n
         label = defaultdict(int)
         seen = defaultdict(int)
-        visited = set()
+        visited = set([0])
         
-        def dfs(node, parent):
-            nonlocal output
+        def dfs(node):
             prev = seen[labels[node]]
             
                         
             for neighbour in adjacency[node]:
                 
-                if neighbour != parent:
+                if neighbour not in visited:
                     visited.add(neighbour)
-                    dfs(neighbour, node)
+                    dfs(neighbour)
                     
             seen[labels[node]] += 1
             output[node] = seen[labels[node]] - prev
                     
             
-        dfs(0, None)
+        dfs(0)
         return output
                     
         
