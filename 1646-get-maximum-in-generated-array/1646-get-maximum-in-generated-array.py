@@ -21,10 +21,10 @@ class Solution:
                     
             return memo[n]
 
+        ans = -inf
         for i in range(n+1):
             dp(i)
-            
-        ans = -inf
-        for i in memo:
             ans = max(ans, memo[i])
+            
+        
         return ans
