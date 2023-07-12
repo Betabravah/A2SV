@@ -1,11 +1,23 @@
 class Solution:
     def maxProfit(self, prices: List[int], fee: int) -> int:
-        sell = 0
-        buy = -float('inf')
+        memo = defaultdict(int)
         
-        for price in prices:
-            buy = max(buy, sell - price)
-            sell = max(sell, buy - fee + price)
+        def dp(n, hold):
+            if n == len(prices):
+                return 0
             
+            state = (n, hold)
             
-        return sell
+            if state not in memo:
+                memo[state] = dp(n+1, hold)
+                
+                if hold:
+                    memo[state] = max(memo[state], dp(n+1, False) - prices[n])
+                else:
+                    memo[state] = max(memo[state], dp(n+1, True) + prices[n] - fee)
+                    
+                    
+            return memo[state]
+        
+        
+        return dp(0, True)
