@@ -1,24 +1,11 @@
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
         
-        rows, cols = m, n
-        ans = [[0 for _ in range(cols)] for j in range(rows)]
-        ans[rows-1][cols-1] = 1
+        dp = [[0 for _ in range(n+1)] for _ in range(m+1)]
+        dp[1][1] = 1
         
+        for i in range(1, m+1):
+            for j in range(1, n+1):
+                dp[i][j] += dp[i][j-1] + dp[i-1][j]
         
-        for row in range(rows-1, -1, -1):
-            for col in range(cols-1, -1, -1):
-                
-                if 0 <= row + 1 < rows:
-                    ans[row][col] += ans[row + 1][col]
-                    
-                if 0 <= col + 1 < cols:
-                    ans[row][col] += ans[row][col + 1]
-                    
-                    
-
-        return ans[0][0]
-            
-            
-            
-            
+        return dp[-1][-1]
