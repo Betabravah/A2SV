@@ -10,8 +10,7 @@ class Trie:
         
 
     def insert(self, word: str) -> None:
-        if word == '':
-            self.root.is_end = True
+        
              
         cur = self.root
         
