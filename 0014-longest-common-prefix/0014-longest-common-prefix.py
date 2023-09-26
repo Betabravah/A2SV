@@ -11,9 +11,8 @@ class Trie:
 
     def insert(self, word: str) -> None:
         if word == '':
-            self.root.children['empty'] = TrieNode()
-            
-            
+            self.root.is_end = True
+             
         cur = self.root
         
         for i in word:
@@ -43,9 +42,7 @@ class Solution:
             return prefix
         
         for child in node.children:
-            if child == 'empty':
-                return prefix
-            
+
             return self.traverse(node.children[child], prefix+child)
             
             
