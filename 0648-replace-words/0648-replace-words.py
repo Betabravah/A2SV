@@ -12,7 +12,6 @@ class Trie:
     def insert(self, word):
         cur = self.root
 
-        
         for i in word:
             if i not in cur.children:
                 cur.children[i] = TrieNode()
