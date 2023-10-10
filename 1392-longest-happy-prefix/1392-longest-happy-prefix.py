@@ -3,7 +3,6 @@ class Solution:
         
         lps = [0] * len(s)
         prevLps, i = 0, 1
-        ans = 0
         
         while i < len(s):
             
@@ -11,8 +10,6 @@ class Solution:
                 lps[i] = prevLps + 1
                 prevLps += 1
                 i += 1
-                
-                ans = max(ans, prevLps)
                 
             else:
                 if prevLps == 0:
