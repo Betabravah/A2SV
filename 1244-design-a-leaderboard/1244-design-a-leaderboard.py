@@ -8,13 +8,14 @@ class Leaderboard:
 
     def addScore(self, playerId: int, score: int) -> None:
         prev_score = self.score[playerId]
+        
         if prev_score:
             self.sorted_score.remove(-prev_score)
-        
+            
         new_score = prev_score + score
-        self.sorted_score.add(-new_score)
         
-        self.score[playerId] += score
+        self.sorted_score.add(-new_score)
+        self.score[playerId] = new_score
 
     def top(self, K: int) -> int:
         ans = 0
@@ -26,10 +27,9 @@ class Leaderboard:
 
     def reset(self, playerId: int) -> None:
         prev_score = self.score[playerId]
-        self.sorted_score.remove(-prev_score)
         
+        self.sorted_score.remove(-prev_score)
         self.score[playerId] = 0
-
 
 # Your Leaderboard object will be instantiated and called as such:
 # obj = Leaderboard()
